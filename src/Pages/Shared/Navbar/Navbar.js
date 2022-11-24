@@ -1,17 +1,66 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+    const {user, logoutUser} = useContext(AuthContext);
+
+    const handleLogOutUser = () =>{
+        logoutUser()
+            .then(()=>{})
+            .catch(err => console.error(err))
+    }
 
     const menuItems = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link>Contact Us</Link></li>
-        <div className="avatar placeholder online">
-            <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-            <img src="https://placeimg.com/192/192/people" alt='' />
-            </div>
-            </div>
+        {
+            user ? 
+            <li><Link onClick={handleLogOutUser} to='login'>Log Out</Link></li>
+            :
+            <li><Link to='login'>Login</Link></li>
+        }
+        {
+            user &&
+            <>
+                {
+                    user?.photoURL ? 
+                    <>
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar placeholder online">
+                                <div className="w-10 rounded-full">
+                                <img src={user?.photoURL} alt='' />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><Link>{user?.displayName}</Link></li>
+                                <li><Link>Account Information</Link></li>
+                            </ul>
+                        </div>
+                    </>
+                    :
+                        <>
+                            <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle">
+                            <div className="avatar placeholder online">
+                                <div className="bg-neutral-focus text-neutral-content rounded-full w-10">
+                                    <FaUserAlt></FaUserAlt>
+                                </div>
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><Link>{user?.name}</Link></li>
+                                <li><Link>Account Information</Link></li>
+                            </ul>
+                        </div>
+                        </>
+                }
+            </>
+            
+        }
+        
     </React.Fragment>
     
     return (

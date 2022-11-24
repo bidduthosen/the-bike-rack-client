@@ -2,7 +2,7 @@ import React from 'react';
 import img1 from '../../../assets/banner/banner3.jpg';
 import img2 from '../../../assets//banner/banner.jpg'
 import img3 from '../../../assets/banner/banner1.jpg'
-import BannerItems from './BannerItems';
+import BannerItems from './BannerItems/BannerItems';
 
 const Banner = () => {
     const bannerData = [
