@@ -6,11 +6,11 @@ const Category = ({category}) => {
     return (
         <Link to={`/products/${categoryId}`}>
         <div className="card card-compact w-full bg-base-100 shadow-xl">
-            <figure><img src={categoryImg} alt="Shoes" className='w-full' /></figure>
+            <figure><img src={categoryImg} alt="Shoes" className='w-[100%]' /></figure>
             <div className="card-body">
                 <h2 className="card-title">{categoryName}</h2>
                 <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary">More Now</button>
                 
                 </div>
             </div>
