@@ -1,0 +1,17 @@
+[
+    {
+        "categoryId": "01",
+        "categoryName": "Yamaha",
+        "categoryImg": "https://m.atcdn.co.uk/vms/media/w600/e944a8dd81d94127aab3624512d58ba8.jpg"
+    },
+    {
+        "categoryId": "02",
+        "categoryName": "BMW",
+        "categoryImg": "https://m.atcdn.co.uk/vms/media/w600/e944a8dd81d94127aab3624512d58ba8.jpg"
+    },
+    {
+        "categoryId": "03",
+        "categoryName": "Suzuki",
+        "categoryImg": "https://m.atcdn.co.uk/vms/media/w600/e944a8dd81d94127aab3624512d58ba8.jpg"
+    }
+  ]
