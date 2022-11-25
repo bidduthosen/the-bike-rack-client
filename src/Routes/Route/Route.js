@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../../layout/DashboardLayout";
 import Main from "../../layout/Main";
 import Blog from "../../Pages/Blogs/Blog";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
@@ -34,8 +35,15 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/allproducts/${params.id}`)
             },
+            
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
             {
-                path: 'dashboard',
+                path: '/dashboard',
                 element: <Dashboard></Dashboard>
             }
         ]

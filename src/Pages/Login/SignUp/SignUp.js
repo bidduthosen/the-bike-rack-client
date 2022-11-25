@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const SignUp = () => {
@@ -11,6 +11,7 @@ const SignUp = () => {
     const {createUser, signInGoogle , updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
 
 
     const handleSignUp = data =>{
@@ -26,6 +27,7 @@ const SignUp = () => {
                 updateUser(userinfo)
                 .then(()=>{
                     toast.success('Create User successfully,.');
+                    navigate('/');
                 })
                 .catch((err)=> {
                     console.log(err)

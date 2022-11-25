@@ -82,6 +82,7 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
+                <label htmlFor="dashboard-drawer" tabIndex={1} className="drawer-button lg:hidden p-3"><img src='https://i.ibb.co/yhVH8Sc/dashboard-speed-icon-icons-com-49837.png' alt='' className='h-12 w-12 rounded-3xl m-2  hover:bg-red-500'></img> </label>
         </div>
     );
 };
