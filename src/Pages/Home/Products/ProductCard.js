@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
-const ProductCard = ({product}) => {
-    console.log(product);
+const ProductCard = ({product, setProducts}) => {
     const {title, image_url, location, original_price, resale_price, using_year, details} = product;
+    
     return (
         <div className="hero my-4">
             <div className="hero-content flex-col lg:flex-row  shadow-xl bg-base-100">
@@ -26,7 +26,11 @@ const ProductCard = ({product}) => {
                 </div>
                 
                 <p className="py-6">{details}</p>
-                    <button className="btn btn-outline rounded-none flex mx-auto">Booking Now</button>
+                    <label 
+                    onClick={()=>setProducts(product)}
+                    htmlFor="booking-modal" 
+                    className="btn btn-outline rounded-none flex mx-auto  w-1/5"
+                    >Booking Now</label>
                 </div>
             </div>
             </div>

@@ -8,7 +8,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const SignUp = () => {
     const  {register, handleSubmit, formState: { errors }} = useForm();
-    const {createUser, signInGoogle } = useContext(AuthContext);
+    const {createUser, signInGoogle , updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const googleProvider = new GoogleAuthProvider();
 
@@ -20,7 +20,17 @@ const SignUp = () => {
             .then(result =>{
                 const user = result.user;
                 console.log(user);
-                toast.success('Create User successfully,.')
+                const userinfo ={
+                    displayName: data.name,
+                }
+                updateUser(userinfo)
+                .then(()=>{
+                    toast.success('Create User successfully,.');
+                })
+                .catch((err)=> {
+                    console.log(err)
+                    setSignUpError(err.message)
+                })
             })
             .catch(err => console.error(err))
     };

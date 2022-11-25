@@ -7,6 +7,7 @@ const Blog = () => {
         <div>
             <h1>blogs</h1>
             <h1>{user?.email}</h1>
+            <h1>{user?.displayName}</h1>
         </div>
     );
 };
