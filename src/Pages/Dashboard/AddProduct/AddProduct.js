@@ -2,12 +2,16 @@ import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProduct = () => {
     const {user} = useContext(AuthContext);
     const  {register, handleSubmit, formState: { errors }} = useForm();
     const [addProductError, setAddProductError] = useState('');
+    const navigate = useNavigate();
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
 
 
     const {data: categories} = useQuery({
@@ -20,38 +24,56 @@ const AddProduct = () => {
     })  
 
     const handleAddAProduct = data =>{
-        const title = data.title;
-        const location = data.location;
-        const original_price = data.original_price;
-        const resale_price = data.resale_price;
-        const using_year = data.using_year;
-        const details = data.details;
-        const id = data.option;
-
-        const categoriesProduct = {
-            title,
-            location,
-            original_price,
-            resale_price,
-            using_year,
-            details,
-            categoryId: id,
-            ownerName: user.displayName,
-            ownerEmail: user.email,
-
-        }
-        console.log(categoriesProduct)
-        fetch('http://localhost:5000/addAProduct',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(categoriesProduct)
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        fetch(url, {
+            method: "POST",
+            body: formData,
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        .then(imageData =>{
+            console.log(imageData.data.url)
+            const images = imageData.data.url;
+            const title = data.title;
+            const location = data.location;
+            const original_price = data.original_price;
+            const resale_price = data.resale_price;
+            const using_year = data.using_year;
+            const details = data.details;
+            const id = data.option;
+
+            const categoriesProduct = {
+                title,
+                location,
+                original_price,
+                resale_price,
+                image_url: images,
+                using_year,
+                details,
+                categoryId: id,
+                ownerName: user.displayName,
+                ownerEmail: user.email,
+
+            }
+            fetch('http://localhost:5000/addAProduct',{
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(categoriesProduct)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.acknowledged){
+                    toast.success(`Add a Product ${title}`)
+                    navigate('/dashboard/myProduct')
+                }
+            })
         })
+
+        
 
 
     }
@@ -92,10 +114,11 @@ const AddProduct = () => {
                                 </select>
                             </div>
                         <div>
-                        <label className="label">
+                                <label className="label">
                                     <span className="label-text">Product Photo</span>
                                 </label>
-                            <input type="file" className="file-input file-input-bordered w-full" />
+                            <input {...register('image', { required: 'Please give me your image?'})} type="file" className="file-input file-input-bordered w-full" />
+                            {errors.image && <p role="alert" className='text-red-600'>{errors.image?.message}</p>}
                         </div>
                     </div>
                     <div className='grid md:grid-cols-2 gap-3'>
