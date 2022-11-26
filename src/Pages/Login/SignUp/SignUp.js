@@ -26,8 +26,7 @@ const SignUp = () => {
                 }
                 updateUser(userinfo)
                 .then(()=>{
-                    toast.success('Create User successfully,.');
-                    navigate('/');
+                    savedUser(data)
                 })
                 .catch((err)=> {
                     console.log(err)
@@ -35,6 +34,28 @@ const SignUp = () => {
                 })
             })
             .catch(err => console.error(err))
+
+        const savedUser = (data) =>{
+            const users = {
+                isUser : data.option,
+                name: data.name,
+                email: data.email
+            }
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(users)
+            })
+            .then(res => res.json())
+            .then(data => {
+                    toast.success('Create User successfully,.');
+                    navigate('/');
+                    console.log(data)
+            })
+
+        }
     };
 
     const handleSignInGoogle = () =>{
@@ -55,8 +76,15 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
-                    <input {...register('name',{ required: 'Please give me your name?'})} type="text" placeholder="Name" className="input input-bordered w-full" />
+                    <input {...register('name',{ required: 'Please give me your name?'})} type="text" placeholder="Name" className="input input-bordered w-full mb-3" />
                     {errors.name && <p role="alert" className='text-red-600'>{errors.name?.message}</p>}
+
+                    <span className="label-text py-2">Options</span>
+                    <select {...register("option", { required: 'Please give me your options?'})} className="select select-bordered mb-3 w-full">
+                        <option>Seller</option>
+                        <option>Buyer</option>
+                    </select>
+
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>

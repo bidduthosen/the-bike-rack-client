@@ -14,8 +14,8 @@ const Category = ({category}) => {
                 
                 </div>
             </div>
-            </div>
-            </Link>
+        </div>
+        </Link>
     );
 };
 
