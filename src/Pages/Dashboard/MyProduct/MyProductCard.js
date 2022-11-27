@@ -2,7 +2,7 @@ import React from 'react';
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { BsFillPatchCheckFill } from "react-icons/bs";
 
-const MyProductCard = ({product}) => {
+const MyProductCard = ({product, setDeleteMyProduct}) => {
     const {title, image_url, location, original_price, resale_price, using_year, ownerName} = product;
 
     return (
@@ -41,7 +41,7 @@ const MyProductCard = ({product}) => {
                 <div className=''>
                     <label className="btn btn-outline rounded-none mx-5 flex mt-8 mb-4">Available</label> 
 
-                    <label className="btn btn-outline rounded-none mx-5 flex my-auto">Delete</label> 
+                    <label onClick={() => setDeleteMyProduct(product)} htmlFor="myProduct-modal" className="btn btn-outline rounded-none mx-5 flex my-auto">Delete</label> 
                 </div>
             </div>
         </div>

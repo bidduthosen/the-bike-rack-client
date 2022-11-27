@@ -66,12 +66,12 @@ const MyOrders = () => {
             {
                 orderDelete && 
                 <ConfirmationModal
-                 title={`Are you sure you want to delete ${orderDelete?.title} ?`}
-                message ={`If you delete ${orderDelete?.name} . It cannot be undone.`}
-                modalData={orderDelete}
-                closeModal={closeModal}
-                handleProductDelete={handleProductDelete}
-                deleteButtonName="Delete"
+                    title={`Are you sure you want to delete ${orderDelete?.title} ?`}
+                    message ={`If you delete ${orderDelete?.name} . It cannot be undone.`}
+                    modalData={orderDelete}
+                    closeModal={closeModal}
+                    handleProductDelete={handleProductDelete}
+                    deleteButtonName="Delete"
                 ></ConfirmationModal>
             }
         </div>

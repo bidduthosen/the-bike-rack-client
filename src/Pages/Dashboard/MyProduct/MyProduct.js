@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider';
 import MyProductCard from './MyProductCard';
 import MyProductModal from './MyProductModal/MyProductModal';
@@ -7,7 +9,9 @@ import MyProductModal from './MyProductModal/MyProductModal';
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
     const [deleteMyProduct, setDeleteMyProduct] = useState(null);
-    const {data: myProducts} = useQuery({
+
+
+    const {data: myProducts, isLoading, refetch} = useQuery({
         queryKey: ["addAProduct", user?.email],
         queryFn: async()=>{
             const res = await fetch(`http://localhost:5000/addAProduct?email=${user?.email}`)
@@ -15,9 +19,24 @@ const MyProduct = () => {
             return data;
         }
     });
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     const closeModal = ()=> {
         setDeleteMyProduct(null);
+    };
+    const handleDeleteMyProduct = myProduct =>{
+        fetch(`http://localhost:5000/addAProduct/${myProduct?._id}`,{
+            method: 'DELETE',
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.deletedCount){
+                toast.success(`${deleteMyProduct.title} Order Cancel done`);
+                refetch()
+            }
+        })
     }
     return (
         <div>
@@ -27,13 +46,19 @@ const MyProduct = () => {
                 myProducts?.map(Product => <MyProductCard
                     key={Product._id}
                     product={Product}
+                    setDeleteMyProduct={setDeleteMyProduct}
                 ></MyProductCard>)
             }
             </div>
             {
                 deleteMyProduct && 
                 <MyProductModal
-                closeModal={closeModal}
+                    title={`Are you sure you want to delete ${deleteMyProduct?.title} ?`}
+                    message ={`If you delete ${deleteMyProduct?.ownerName} . It cannot be undone.`}
+                    closeModal={closeModal}
+                    modalData ={deleteMyProduct}
+                    handleDeleteMyProduct={handleDeleteMyProduct}
+                    deleteButtonName="Delete"
                 ></MyProductModal>
             }
         </div>
