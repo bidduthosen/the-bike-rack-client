@@ -42,6 +42,7 @@ const AddProduct = () => {
             const resale_price = data.resale_price;
             const using_year = data.using_year;
             const details = data.details;
+            const publishDate = data.publishDate;
             const id = data.option;
 
             const categoriesProduct = {
@@ -55,6 +56,7 @@ const AddProduct = () => {
                 categoryId: id,
                 ownerName: user.displayName,
                 ownerEmail: user.email,
+                publishDate,
 
             }
             fetch('http://localhost:5000/addAProduct',{
@@ -153,11 +155,22 @@ const AddProduct = () => {
                         </div>
                     </div>
 
-                    <label className="label">
-                        <span className="label-text">Product Details</span>
-                    </label>
-                    <textarea {...register('details',{ required: 'Please give me your details?'})} className="textarea textarea-bordered mb-3 w-full" placeholder="Bio"></textarea>
-                    {errors.details && <p role="alert" className='text-red-600'>{errors.details?.message}</p>}
+                    <div className='grid md:grid-cols-2 gap-3'>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Publish Date</span>
+                            </label>
+                            <input {...register('publishDate',{ required: 'Please give me your publishDate?'})} type="date" placeholder="publishDate" className="input input-bordered w-full mb-3" />
+                            {errors.publishDate && <p role="alert" className='text-red-600'>{errors.publishDate?.message}</p>}
+                        </div>
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Product Details</span>
+                            </label>
+                            <textarea {...register('details',{ required: 'Please give me your details?'})} className="textarea textarea-bordered mb-3 w-full" placeholder="Bio"></textarea>
+                            {errors.details && <p role="alert" className='text-red-600'>{errors.details?.message}</p>}
+                        </div>
+                    </div>
                     
                     {/* error message password  */}
 

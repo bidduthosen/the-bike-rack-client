@@ -53,10 +53,10 @@ const BookingModal = ({products, setProducts}) => {
                 <div className="font-semibold text-2xl absolute left-2 top-2 p-3">{title}</div>
                 <div className="font-semibold text-lg absolute left-2 top-10 p-3">Price: ${resale_price}</div>
                 <form onSubmit={handleBooking} className='mt-16'>
-                    <input name='name' type="text" defaultValue={user?.displayName} readOnly placeholder="Full Name" className="input input-bordered w-full my-2" />
+                    <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Full Name" className="input input-bordered w-full my-2" />
                     <input name='location' type="text"  placeholder="location" className="input input-bordered w-full my-2" required/>
                     <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered w-full my-2" />
-                    <input name='email' type="email" defaultValue={user?.email} readOnly placeholder="Email" className="input input-bordered w-full my-2" />
+                    <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email" className="input input-bordered w-full my-2" />
                     <input name='date' type="date" placeholder="Type here" className="input input-bordered w-full" required />
                     <button type='submit' className="btn btn-active w-full mt-3">SUBMIT</button>
                 </form>

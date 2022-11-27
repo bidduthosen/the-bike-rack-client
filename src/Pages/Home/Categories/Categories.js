@@ -18,13 +18,16 @@ const Categories = () => {
     }
 
     return (
-        <div  className='grid md:grid-cols-2 lg:grid-cols-3 gap-7 my-8'>
+        <div className='my-12'>
+            <h1 className="text-3xl font-semibold">Top Categories Bike Brand</h1>
+            <div  className='grid md:grid-cols-2 lg:grid-cols-3 gap-7 my-8'>
             {
                 categories?.map(category => <Category
                 key={category.categoryId}
                 category={category}
                 ></Category>)
             }
+        </div>
         </div>
     );
 };

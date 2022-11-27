@@ -1,8 +1,8 @@
 import React from 'react';
-import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 const ProductCard = ({product, setProducts}) => {
-    const {title, image_url, location, original_price, resale_price, using_year, details, ownerName} = product;
+    const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate} = product;
     
     return (
             <div className="hero my-4">
@@ -21,17 +21,22 @@ const ProductCard = ({product, setProducts}) => {
                                     <FaStar className='mr-1' style={{color: '#ffb52f'}}></FaStar>
                                     <FaStarHalfAlt style={{color: '#ffb52f'}}></FaStarHalfAlt>
                                 </div>
-                                <h3 className="text-lg font-bold flex items-center"><FaMapMarkerAlt className='mr-1 text-[#0000FF]'/>Location: {location}</h3>
-                                <input type="date" placeholder="Type here" className="input input-bordered w-full max-w-xs my-2" />
+                                <div className="indicator bg-gray-100 p-1 rounded-md my-2">
+                                    <span className="indicator-item"><FaCheckCircle style={{color:'#1D1CE5'}}></FaCheckCircle></span> 
+                                    <h2 className='my-1 px-2 text-base uppercase'>Owner: {ownerName}</h2>
+                                </div>
+                                <h3 className="text-lg font-medium flex items-center"><FaMapMarkerAlt className='mr-1 text-[#0000FF]'/>Location: {location}</h3>
+                                
                             </div>
                             <div className='text-center'>
-                                <h2 className='opacity-75 my-3'>Owner Name: {ownerName}</h2>
-                                <h3 className="text-lg font-medium border border-red-300 px-8 py-2 bg-red-50">Original Price: ${original_price}</h3>
-                                <h3 className="text-lg font-medium border border-red-300 px-8 py-2 bg-red-50">Resale Price: ${resale_price}</h3>
-                                <h4 className="border border-red-300 px-8 py-2 bg-red-50">Using Years: {using_year} Years</h4>
+                                
+                                <h3 className="text-lg border border-red-300 px-8 py-2 bg-red-50">Original Price: ${original_price}</h3>
+                                <h3 className="text-lg border border-red-300 px-8 py-2 bg-red-50">Resale Price: ${resale_price}</h3>
+                                <h4 className="px-8 py-2">Using Years: {using_year} Years</h4>
+                                <div className=" w-full text-medium">last update: {publishDate}</div>
                             </div> 
                         </div>
-                        <div>
+                        <div className='mt-4'>
                             <h3 className="text-xl border-b-2 border-gray-200">Quick Overview</h3>
                             <p className="py-2">{details}</p>
                         </div>
