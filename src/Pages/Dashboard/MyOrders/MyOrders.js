@@ -17,7 +17,7 @@ const MyOrders = () => {
     return (
         <div className='w-[92%] mx-auto'>
             <div className='flex justify-between items-center'>
-                <div className="text-2xl font-semibold my-9">My Orders</div>
+            <h2 className="text-2xl font-semibold border-b-4 border-gray-500 my-7 p-4 md:w-3/12 ">My Orders</h2>
             </div>
             <div className="overflow-x-auto w-full">
             <table className="table w-full">
