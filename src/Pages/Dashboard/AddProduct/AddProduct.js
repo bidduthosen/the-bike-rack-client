@@ -85,7 +85,7 @@ const AddProduct = () => {
         <div className='flex justify-center items-center mt-5 mb-20'>
             <div className='shadow-xl bg-base-100 w-[95%] p-6 rounded-xl'>
                 <form onSubmit={handleSubmit(handleAddAProduct)}>
-                    <h2 className="text-2xl font-semibold border-b-4 border-gray-500 mb-7 p-4 md:w-3/12 ">Add a Product</h2>
+                    <h2 className="text-2xl font-semibold border-b-4 border-gray-500 mb-7 p-4 md:w-3/12 mx-auto text-center">Add a Product</h2>
                         <div className='grid md:grid-cols-2 gap-3'>
                             <div>
                             <label className="label">

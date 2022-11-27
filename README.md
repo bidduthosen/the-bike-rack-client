@@ -1,8 +1,23 @@
-# Getting Started with Create React App
+# The Bike Rack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live website: (https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Client site Github Code: (https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-bidduthosen).
+
+Server site Github Code: (https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-bidduthosen).
+
+## this website  Available Features
+### Javascript use in the project implement.
+### create react app used in this create project.
+### React router dom.
+### React Tailwind use.
+### React Hooks Form user in login page create.
+### React Icons use.
+### React hot toast .
+### TenStak query.
+### DashBoard implement MongoDB .
+### Daisy UI used.
+
 
 In the project directory, you can run:
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheckCircle, FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { BsFillPatchCheckFill } from "react-icons/bs";
 
 const MyProductCard = ({product}) => {
@@ -38,7 +38,11 @@ const MyProductCard = ({product}) => {
                     </div>
                 </div>
                 </div>
-                <label className="btn btn-outline rounded-none mx-5 flex my-auto">Available</label>
+                <div className=''>
+                    <label className="btn btn-outline rounded-none mx-5 flex mt-8 mb-4">Available</label> 
+
+                    <label className="btn btn-outline rounded-none mx-5 flex my-auto">Delete</label> 
+                </div>
             </div>
         </div>
     );

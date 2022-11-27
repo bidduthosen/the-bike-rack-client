@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyOrderCard = ({MyOrder, index}) => {
+const MyOrderCard = ({MyOrder, index, setOrderDelete}) => {
     const {name, email, title, location, resale_price, using_year, date, phone} = MyOrder;
     return (
         <tr>
@@ -20,14 +20,14 @@ const MyOrderCard = ({MyOrder, index}) => {
                 <div className="font-medium">{title}</div>
             <span className="badge badge-ghost badge-sm my-1"> Price: ${resale_price}</span>
             <br />
-            <div className=" badge-sm pt-0.5"> Useing Years: {using_year} Years</div>
+            <div className=" badge-sm pt-0.5"> Using Years: {using_year} Years</div>
             </td>
             <td>
             <div className="text-sm">Order Date: {date}</div>
             <div className="text-sm pt-1">Meeting Location: {location}</div>
             </td>
             <th>
-            <button className="btn btn-error btn-sm">Cancel</button>
+            <label onClick={()=>setOrderDelete(MyOrder)} htmlFor="confirmation-modal" className="btn btn-warning btn-sm">Order Cancel</label>
             </th>
         </tr>
     );
