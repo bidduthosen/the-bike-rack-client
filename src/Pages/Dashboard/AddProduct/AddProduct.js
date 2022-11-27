@@ -44,6 +44,7 @@ const AddProduct = () => {
             const details = data.details;
             const publishDate = data.publishDate;
             const id = data.option;
+            const selectFav = data.selectFav;
 
             const categoriesProduct = {
                 title,
@@ -57,6 +58,7 @@ const AddProduct = () => {
                 ownerName: user.displayName,
                 ownerEmail: user.email,
                 publishDate,
+                choiceOption : selectFav,
 
             }
             fetch('http://localhost:5000/addAProduct',{
@@ -80,7 +82,7 @@ const AddProduct = () => {
 
     }
     return (
-        <div className='flex justify-center items-center mt-5'>
+        <div className='flex justify-center items-center mt-5 mb-20'>
             <div className='shadow-xl bg-base-100 w-[95%] p-6 rounded-xl'>
                 <form onSubmit={handleSubmit(handleAddAProduct)}>
                     <h2 className="text-2xl font-semibold border-b-4 border-gray-500 mb-7 p-4 md:w-3/12 ">Add a Product</h2>
@@ -158,6 +160,26 @@ const AddProduct = () => {
                     <div className='grid md:grid-cols-2 gap-3'>
                         <div>
                             <label className="label">
+                                <span className="label-text">Contract Number</span>
+                            </label>
+                            <input {...register('number',{ required: 'Please give me your Contract Number?'})} type="number" placeholder="number" className="input input-bordered w-full mb-3" />
+                            {errors.number && <p role="alert" className='text-red-600'>{errors.publishDate?.number}</p>}
+                        </div>
+                        <div>
+                            <label className="label">
+                                    <span className="label-text">Select Your fav</span>
+                            </label>
+                            <select {...register("selectFav")} className="select select-bordered w-full ">
+                                <option selected>excellent</option>
+                                <option>good</option>
+                                <option>fair</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className='grid md:grid-cols-2 gap-3'>
+                        <div>
+                            <label className="label">
                                 <span className="label-text">Publish Date</span>
                             </label>
                             <input {...register('publishDate',{ required: 'Please give me your publishDate?'})} type="date" placeholder="publishDate" className="input input-bordered w-full mb-3" />
@@ -165,9 +187,9 @@ const AddProduct = () => {
                         </div>
                         <div>
                             <label className="label">
-                                <span className="label-text">Product Details</span>
+                                <span className="label-text">Product description</span>
                             </label>
-                            <textarea {...register('details',{ required: 'Please give me your details?'})} className="textarea textarea-bordered mb-3 w-full" placeholder="Bio"></textarea>
+                            <textarea {...register('details',{ required: 'Please give me your details?'})} className="textarea textarea-bordered mb-3 w-full" placeholder="description..."></textarea>
                             {errors.details && <p role="alert" className='text-red-600'>{errors.details?.message}</p>}
                         </div>
                     </div>

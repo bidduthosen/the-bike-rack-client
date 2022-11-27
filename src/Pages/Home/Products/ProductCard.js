@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaCheckCircle, FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
 const ProductCard = ({product, setProducts}) => {
     const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate} = product;
@@ -21,11 +22,11 @@ const ProductCard = ({product, setProducts}) => {
                                     <FaStar className='mr-1' style={{color: '#ffb52f'}}></FaStar>
                                     <FaStarHalfAlt style={{color: '#ffb52f'}}></FaStarHalfAlt>
                                 </div>
-                                <div className="indicator bg-gray-100 p-1 rounded-md my-2">
-                                    <span className="indicator-item"><FaCheckCircle style={{color:'#1D1CE5'}}></FaCheckCircle></span> 
-                                    <h2 className='my-1 px-2 text-base uppercase'>Owner: {ownerName}</h2>
+                                <div className=" flex justify-start items-center">
+                                    <h2 className='my-1 mr-1 text-md' >Owner: <span className='font-bold text-md uppercase'>{ownerName}</span></h2>
+                                    <BsFillPatchCheckFill style={{color:'#1D1CE5'}}></BsFillPatchCheckFill>
                                 </div>
-                                <h3 className="text-lg font-medium flex items-center"><FaMapMarkerAlt className='mr-1 text-[#0000FF]'/>Location: {location}</h3>
+                                <h3 className="text-md flex items-center"><FaMapMarkerAlt className='mr-1 text-[#0000FF]'/>Location: {location}</h3>
                                 
                             </div>
                             <div className='text-center'>
