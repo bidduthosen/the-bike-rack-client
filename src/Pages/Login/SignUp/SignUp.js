@@ -5,14 +5,20 @@ import toast from 'react-hot-toast';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import useToken from '../../../hooks/useToken';
 
 const SignUp = () => {
     const  {register, handleSubmit, formState: { errors }} = useForm();
     const {createUser, signInGoogle , updateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
+    if(token){
+        navigate('/');
+    }
 
     const handleSignUp = data =>{
         // console.log(data);
@@ -51,12 +57,27 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                     toast.success('Create User successfully,.');
-                    navigate('/');
-                    console.log(data)
+                    // setCreatedUserEmail(data.email)
+                    setCreatedUserEmail(users.email)
+                    
             })
 
         }
     };
+
+
+    // const getUserToken = email =>{
+    //     console.log(email)
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if(data.accessToken){
+    //             localStorage.setItem('accessToken', data.accessToken)
+    //             navigate('/')
+    //         }
+    //         console.log(data)
+    //     })
+    // }
 
     const handleSignInGoogle = () =>{
         signInGoogle(googleProvider)

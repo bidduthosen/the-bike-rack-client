@@ -12,7 +12,11 @@ const MyOrders = () => {
     const {data: MyOrders, refetch} = useQuery({
         queryKey: [user?.email],
         queryFn: async()=> {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             const data = await res.json()
             return data
         }

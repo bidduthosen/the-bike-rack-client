@@ -4,15 +4,23 @@ import { useForm } from 'react-hook-form';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const {loginUser, signInGoogle} = useContext(AuthContext);
     const {register, handleSubmit, formState:{errors}} = useForm();
     const [loginError, setLoginError] = useState('');
+
+    const [loginUserEmail, setLoginUserEmail ] = useState('');
+    const [token] = useToken(loginUserEmail);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+    if(token){
+        navigate(from ,{replace: true})
+    }
 
 
     const handleLogin = (data) =>{
@@ -20,8 +28,7 @@ const Login = () => {
         loginUser(data.email, data.password)
             .then(result =>{
                 const user = result.user;
-                console.log(user);
-                navigate(from ,{replace: true})
+                setLoginUserEmail(user?.email)
             })
             .catch(err =>{
                 console.error(err.message);
