@@ -47,7 +47,7 @@ const SignUp = () => {
                 name: data.name,
                 email: data.email
             }
-            fetch('http://localhost:5000/users', {
+            fetch('https://the-bike-rack-server.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -68,7 +68,7 @@ const SignUp = () => {
 
     // const getUserToken = email =>{
     //     console.log(email)
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://the-bike-rack-server.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){

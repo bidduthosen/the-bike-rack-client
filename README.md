@@ -1,12 +1,15 @@
 # The Bike Rack
 
-Live website: (https://github.com/facebook/create-react-app).
+Live website: (https://the-bike-rack-f24f1.web.app/).
 
 Client site Github Code: (https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-bidduthosen).
 
 Server site Github Code: (https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-bidduthosen).
 
-## this website  Available Features
+adminEmail: mdbidduthosen@gmail.com
+adminPassword: 111111
+
+## this website  Available Features...
 ### Javascript use in the project implement.
 ### create react app used in this create project.
 ### React router dom.
@@ -17,6 +20,8 @@ Server site Github Code: (https://github.com/programming-hero-web-course-4/b612-
 ### TenStak query.
 ### DashBoard implement MongoDB .
 ### Daisy UI used.
+### admin private route .
+### back and  implement NoSQL MongoDB
 
 
 In the project directory, you can run:

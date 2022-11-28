@@ -5,12 +5,12 @@ import toast from 'react-hot-toast';
 const AllUsers = () => {
     const {data: allUsers = [], refetch} = useQuery({
         queryKey: ['users'],
-        queryFn : ()=> fetch('http://localhost:5000/users')
+        queryFn : ()=> fetch('https://the-bike-rack-server.vercel.app/users')
             .then(res => res.json())
     });
 
     const handleAdminRole = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`,{
+        fetch(`https://the-bike-rack-server.vercel.app/users/admin/${id}`,{
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const AllUsers = () => {
     };
 
     const handleDeleteUser = (id) =>{
-       fetch(`http://localhost:5000/users/${id}`,{
+       fetch(`https://the-bike-rack-server.vercel.app/users/${id}`,{
             method: 'DELETE'
        })
        .then(res => res.json())

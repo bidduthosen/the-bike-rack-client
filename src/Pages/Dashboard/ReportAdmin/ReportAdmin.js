@@ -6,7 +6,7 @@ const ReportAdmin = () => {
     const {data: reportProducts} = useQuery({
         queryKey: ['reportProducts'],
         queryFn: async()=> {
-            const res = await fetch('http://localhost:5000/reportProducts')
+            const res = await fetch('https://the-bike-rack-server.vercel.app/reportProducts')
             const data = await res.json()
             return data
         }

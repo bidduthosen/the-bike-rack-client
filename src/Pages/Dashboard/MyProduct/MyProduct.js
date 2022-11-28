@@ -14,7 +14,7 @@ const MyProduct = () => {
     const {data: myProducts, isLoading, refetch} = useQuery({
         queryKey: ["addAProduct", user?.email],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/addAProduct?email=${user?.email}`)
+            const res = await fetch(`https://the-bike-rack-server.vercel.app/addAProduct?email=${user?.email}`)
             const data = await res.json();
             return data;
         }
@@ -27,7 +27,7 @@ const MyProduct = () => {
         setDeleteMyProduct(null);
     };
     const handleDeleteMyProduct = myProduct =>{
-        fetch(`http://localhost:5000/addAProduct/${myProduct?._id}`,{
+        fetch(`https://the-bike-rack-server.vercel.app/addAProduct/${myProduct?._id}`,{
             method: 'DELETE',
         })
         .then(res => res.json())

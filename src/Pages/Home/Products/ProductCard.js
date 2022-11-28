@@ -8,7 +8,7 @@ const ProductCard = ({product, setProducts}) => {
     const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate, choiceOption} = product;
     
     const handleReportToAdmin = (reportProduct) =>{
-        fetch('http://localhost:5000/reportProducts',{
+        fetch('https://the-bike-rack-server.vercel.app/reportProducts',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

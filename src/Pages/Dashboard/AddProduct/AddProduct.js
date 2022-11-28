@@ -17,7 +17,7 @@ const AddProduct = () => {
     const {data: categories} = useQuery({
         queryKey: ["categoriesId"],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/categoriesId`);
+            const res = await fetch(`https://the-bike-rack-server.vercel.app/categoriesId`);
             const data  = await res.json();
             return data;
         }
@@ -61,7 +61,7 @@ const AddProduct = () => {
                 choiceOption : selectFav,
 
             }
-            fetch('http://localhost:5000/addAProduct',{
+            fetch('https://the-bike-rack-server.vercel.app/addAProduct',{
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

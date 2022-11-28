@@ -19,7 +19,6 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
-        <li><Link>Advertised items</Link></li>
         {
             user ? 
             <li><Link onClick={handleLogOutUser} to='login' className='btn-error text-white font-bold rounded-3xl'>Log Out</Link></li>
