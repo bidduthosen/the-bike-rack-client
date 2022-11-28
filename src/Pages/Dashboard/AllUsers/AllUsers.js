@@ -39,6 +39,7 @@ const AllUsers = () => {
     }
     return (
         <div className='w-[92%] mx-auto my-6'>
+            <h2 className="text-2xl font-semibold border-b-4 border-gray-500 mb-7 p-4 md:w-3/12 mx-auto text-center">All Users</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

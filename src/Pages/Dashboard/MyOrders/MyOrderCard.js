@@ -27,7 +27,8 @@ const MyOrderCard = ({MyOrder, index, setOrderDelete}) => {
             <div className="text-sm pt-1">Meeting Location: {location}</div>
             </td>
             <th>
-            <label onClick={()=>setOrderDelete(MyOrder)} htmlFor="confirmation-modal" className="btn btn-warning btn-sm">Order Cancel</label>
+            <label onClick={()=>setOrderDelete(MyOrder)} htmlFor="confirmation-modal" className="btn btn-outline btn-error btn-sm">Order Cancel</label>
+                <td><label className="btn btn-outline btn-primary btn-sm px-4">Payment</label></td>
             </th>
         </tr>
     );
