@@ -76,11 +76,9 @@ const AddProduct = () => {
                 }
             })
         })
-
-        
-
-
     }
+
+
     return (
         <div className='flex justify-center items-center mt-5 mb-20'>
             <div className='shadow-xl bg-base-100 w-[95%] p-6 rounded-xl'>
@@ -170,7 +168,7 @@ const AddProduct = () => {
                                     <span className="label-text">Select Your fav</span>
                             </label>
                             <select {...register("selectFav")} className="select select-bordered w-full ">
-                                <option selected>excellent</option>
+                                <option>excellent</option>
                                 <option>good</option>
                                 <option>fair</option>
                             </select>

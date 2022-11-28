@@ -10,7 +10,7 @@ const MyProductCard = ({product, setDeleteMyProduct}) => {
         <div>
             <div className='md:flex gap-4 bg-base-100 w-[98%] mx-auto mt-6 shadow-xl p-2'>
                 <div className=' md:w-4/12'>
-                <img src={image_url} alt="Album" className='h-full w-full rounded-md'/>
+                <img src={image_url} alt="Album" className='md:h-[200px] w-full rounded-md'/>
                 </div>
                 <div className='md:w-8/12'>
                 <div className=" md:flex">

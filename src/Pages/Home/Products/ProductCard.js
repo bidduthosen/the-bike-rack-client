@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({product, setProducts}) => {
-    const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate} = product;
+    const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate, choiceOption} = product;
     
     return (
             <div className="hero my-4">
@@ -27,6 +28,7 @@ const ProductCard = ({product, setProducts}) => {
                                     <BsFillPatchCheckFill style={{color:'#1D1CE5'}}></BsFillPatchCheckFill>
                                 </div>
                                 <h3 className="text-md flex items-center"><FaMapMarkerAlt className='mr-1 text-[#0000FF]'/>Location: {location}</h3>
+                                <h3 className="text-md flex items-center"><img src='https://i.ibb.co/y8qY5TQ/status.png' className='h-4 w-4 mr-1' alt=''></img> Status: {choiceOption}</h3>
                                 
                             </div>
                             <div className='text-center'>
@@ -42,7 +44,7 @@ const ProductCard = ({product, setProducts}) => {
                             <p className="py-2">{details}</p>
                         </div>
                         <label className="btn btn-outline rounded-none mr-2"
-                        >Add to Cart</label>
+                        ><Link className='link link-primary'>Report to Admin</Link></label>
                         <label 
                         onClick={()=>setProducts(product)}
                         htmlFor="booking-modal" 
