@@ -22,9 +22,9 @@ const Navbar = () => {
         <li><Link>Advertised items</Link></li>
         {
             user ? 
-            <li><Link onClick={handleLogOutUser} to='login'>Log Out</Link></li>
+            <li><Link onClick={handleLogOutUser} to='login' className='btn-error text-white font-bold rounded-3xl'>Log Out</Link></li>
             :
-            <li><Link to='login'>Login</Link></li>
+            <li><Link to='login' className='btn-info rounded-3xl'>Login</Link></li>
         }
         {
             user &&

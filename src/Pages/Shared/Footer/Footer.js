@@ -21,7 +21,7 @@ const Footer = () => {
                     <span className="footer-title">Company</span> 
                     <Link className="link link-hover">About us</Link> 
                     <Link className="link link-hover">Contact</Link> 
-                    <Link className="link link-hover">Blogs</Link> 
+                    <Link to='blog' className="link link-hover">Blogs</Link> 
                 </div> 
                 <div>
                     <span className="footer-title">Social Use My page</span> 
