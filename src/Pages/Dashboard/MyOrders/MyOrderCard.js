@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyOrderCard = ({MyOrder, index, setOrderDelete}) => {
-    const {name, email, title, location, resale_price, using_year, date, phone} = MyOrder;
+    const {name, email, title, location, resale_price, using_year, date, phone, paid} = MyOrder;
     return (
         <tr>
             <th>
@@ -27,8 +27,18 @@ const MyOrderCard = ({MyOrder, index, setOrderDelete}) => {
             <div className="text-sm pt-1">Meeting Location: {location}</div>
             </td>
             <th>
-            <label onClick={()=>setOrderDelete(MyOrder)} htmlFor="confirmation-modal" className="btn btn-outline btn-error btn-sm">Order Cancel</label>
-                <td><label className="btn btn-outline btn-primary btn-sm px-4">Payment</label></td>
+                <div>
+                    <label onClick={()=>setOrderDelete(MyOrder)} htmlFor="confirmation-modal" className="btn btn-outline btn-error btn-sm mb-2 flex justify-center w-3/4 mx-auto">Order Cancel</label>
+                    <div className='flex justify-center'>
+                            {
+                                resale_price &&  !paid && <label className="btn btn-outline btn-primary btn-sm px-7">Payment</label>
+                            }
+                            {
+                                resale_price &&  paid && <label className="btn btn-outline btn-primary btn-sm px-7">Paid</label>
+                            }
+                    </div>
+                </div>
+                
             </th>
         </tr>
     );

@@ -1,32 +1,15 @@
 import React from 'react';
+import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { FaMapMarkerAlt, FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { BsFillPatchCheckFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 
-const ProductCard = ({product, setProducts}) => {
-    const {title, image_url, location, original_price, resale_price, using_year, details, ownerName, publishDate, choiceOption} = product;
-    
-    const handleReportToAdmin = (reportProduct) =>{
-        fetch('http://localhost:5000/reportProducts',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(reportProduct)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                toast.error('report to Products!')
-            }
-        })
-    } 
+const ReportAdminCard = ({reportProduct}) => {
+    const {title, image_url, location, original_price, resale_price, using_year, ownerName, publishDate, choiceOption} = reportProduct;
     return (
-            <div className="hero my-4">
-                <div className="hero-content grid lg:grid-cols-3 shadow-xl bg-base-100 w-full">
+        <div className="hero my-8">
+                <div className="hero-content grid lg:grid-cols-3 shadow-xl bg-base-100 w-full mx-4">
                     <div className='flex mx-auto'>
-                        <img src={image_url} className="max-w-sm" alt=''/>
+                        <img src={image_url} className="h-[200px] w-full" alt=''/>
                     </div>
                     <div className='md:px-12 lg:mx-3 lg:col-span-2 w-full'>
                         <div className='flex justify-between items-center'>
@@ -54,23 +37,13 @@ const ProductCard = ({product, setProducts}) => {
                                 <h4 className="px-8 py-2">Using Years: {using_year} Years</h4>
                                 <div className=" w-full text-medium">last update: {publishDate}</div>
                             </div> 
-                        </div>
-                        <div className='mt-4'>
-                            <h3 className="text-xl border-b-2 border-gray-200">Quick Overview</h3>
-                            <p className="py-2">{details}</p>
-                        </div>
 
-                        <label onClick={()=> handleReportToAdmin(product)} className="btn btn-outline rounded-none mr-2"><Link  className='link link-primary'>Report to Admin</Link></label>
-
-                        <label 
-                        onClick={()=>setProducts(product)}
-                        htmlFor="booking-modal" 
-                        className="btn btn-outline rounded-none"
-                        >Booking Now</label>
+                        </div>
+                            <label className="btn btn-outline rounded-none my-5 mr-2">delete Products</label>
                     </div>
                 </div>
             </div>
     );
 };
 
-export default ProductCard;
+export default ReportAdminCard;
