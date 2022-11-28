@@ -13,6 +13,9 @@ const AllUsers = () => {
         console.log(id)
         fetch(`http://localhost:5000/users/admin/${id}`,{
             method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -32,7 +35,7 @@ const AllUsers = () => {
                         <th></th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Admin</th>
+                        <th>Admin Role</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
@@ -42,7 +45,12 @@ const AllUsers = () => {
                             <th>{i + 1}</th>
                             <td>{user?.name}</td>
                             <td>{user?.email}</td>
-                            <td>{user?.role !== 'admin' && <button onClick={()=>handleAdminRole(user._id)} className="btn btn-outline btn-sm btn-info">Make Admin</button>}</td>
+                            <td>{
+                                user?.role !== 'admin' ? 
+                                <button onClick={()=>handleAdminRole(user._id)} className="btn btn-outline btn-sm btn-info">Make Admin</button>
+                                :
+                                <button className="btn btn-outline btn-sm btn-success">Admin</button>
+                            }</td>
                             <td><button className="btn btn-square">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
